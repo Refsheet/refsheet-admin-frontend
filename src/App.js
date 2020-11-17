@@ -6,7 +6,9 @@ import { ApolloProvider } from '@apollo/client'
 import { Query } from '@apollo/client/react/components'
 
 import { loader } from 'graphql.macro'
+import LoginForm from "./components/LoginForm"
 const getVersion = loader('./getVersion.graphql')
+const getSession = loader('./getSession.graphql')
 
 const TimedVersion = ({ loading, data, error }) => {
   const [start, setStart] = useState(Date.now())
@@ -45,6 +47,12 @@ function App() {
               <TimedVersion loading={loading} data={data} error={error} />
             )}
           </Query>
+          <Query query={getSession}>
+            {({ loading, data, error }) => (
+              <div>{ JSON.stringify({data, loading})} }</div>
+            )}
+          </Query>
+          <LoginForm />
         </header>
       </div>
     </ApolloProvider>
