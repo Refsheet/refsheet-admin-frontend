@@ -1,7 +1,5 @@
 FROM node:10.13.0
 
-ENV CI=true
-
 WORKDIR /app
 
 COPY package.json /app/package.json
