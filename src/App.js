@@ -7,6 +7,8 @@ import { Query } from '@apollo/client/react/components'
 
 import { loader } from 'graphql.macro'
 import LoginForm from "./components/LoginForm"
+import SessionProvider from "./components/providers/SessionProvider"
+import Layout from "./components/Layout"
 const getVersion = loader('./getVersion.graphql')
 const getSession = loader('./getSession.graphql')
 
@@ -39,22 +41,25 @@ const TimedVersion = ({ loading, data, error }) => {
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
-        <header className="App-header">
-          <img width={150} src={logo} className="App-logo" alt="logo" />
-          <Query query={getVersion}>
-            {({ loading, data, error }) => (
-              <TimedVersion loading={loading} data={data} error={error} />
-            )}
-          </Query>
-          <Query query={getSession}>
-            {({ loading, data, error }) => (
-              <div>{ JSON.stringify({data, loading})} }</div>
-            )}
-          </Query>
-          <LoginForm />
-        </header>
-      </div>
+      <SessionProvider>
+        <div className="App">
+          <Layout />
+          <header className="App-header">
+            <img width={150} src={logo} className="App-logo" alt="logo" />
+            <Query query={getVersion}>
+              {({ loading, data, error }) => (
+                <TimedVersion loading={loading} data={data} error={error} />
+              )}
+            </Query>
+            <Query query={getSession}>
+              {({ loading, data, error }) => (
+                <div>{ JSON.stringify({data, loading})} }</div>
+              )}
+            </Query>
+            <LoginForm />
+          </header>
+        </div>
+      </SessionProvider>
     </ApolloProvider>
   )
 }
