@@ -1,0 +1,41 @@
+steps:
+  #== BUILD
+
+  # Kaniko 0.17.0 fixes chrome install bug: https://github.com/GoogleContainerTools/kaniko/issues/769
+  # Kaniko 0.17.1 fixes /var/run issue in Google Cloud: https://github.com/GoogleContainerTools/kaniko/issues/1001
+  # OPEN: Kaniko 0.17.x produces invalid images (whiteout?): https://github.com/GoogleContainerTools/kaniko/issues/1039
+  # CLOSED?: New Kaniko version SHOULD fix this, pinning tot he debug tag mentioned here: https://github.com/GoogleContainerTools/kaniko/issues/1039#issuecomment-590954787
+  - name: 'gcr.io/kaniko-project/executor:a1af057f997316bfb1c4d2d82719d78481a02a79'
+    id: Build Container
+    args:
+      - --destination=gcr.io/$PROJECT_ID/refsheet-admin-frontend-ci:$REVISION_ID
+      - --cache=true
+      - --dockerfile=./Dockerfile.ci
+
+  - name: 'gcr.io/$PROJECT_ID/refsheet-admin-frontend-ci:$REVISION_ID'
+    id: Build App
+    dir: /app
+    args: [ 'npm', 'run', 'build' ]
+    waitFor:
+      - Build Container
+    volumes:
+      - name: 'artifacts'
+        path: '/app/build'
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    id: Upload Artifacts
+    volumes:
+      - name: 'artifacts'
+        path: '/artifacts'
+    args:
+      - -m
+      - -h
+      - 'Cache-Control:"Cache-Control: public, max-age=31559652"'
+      - cp
+      - -a
+      - public-read
+      - -rZ
+      - /artifacts/*
+      - gs://admin.refsheet.net/
+    waitFor:
+      - Build App
