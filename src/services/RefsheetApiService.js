@@ -9,7 +9,7 @@ const httpLink = new HttpLink({
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: httpLink
+  link: httpLink,
 })
 
 export { HOST as host }

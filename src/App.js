@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from './assets/RS_Logo_SVG.svg'
 import './App.css'
-import client from "./services/RefsheetApiService"
-import {ApolloProvider} from "@apollo/client"
-import {Query} from "@apollo/client/react/components"
+import client from './services/RefsheetApiService'
+import { ApolloProvider } from '@apollo/client'
+import { Query } from '@apollo/client/react/components'
 
 import { loader } from 'graphql.macro'
 const getVersion = loader('./getVersion.graphql')
 
-const TimedVersion = ({loading, data, error}) => {
+const TimedVersion = ({ loading, data, error }) => {
   const [start, setStart] = useState(Date.now())
   const [time, setTime] = useState(0)
 
@@ -25,13 +25,13 @@ const TimedVersion = ({loading, data, error}) => {
 
   if (data.getVersion) {
     return (
-      <div>Connected to version {data.getVersion.version} in {time}ms.</div>
+      <div>
+        Connected to version {data.getVersion.version} in {time}ms.
+      </div>
     )
   }
 
-  return (
-    <div>Something went sadly incorrect.</div>
-  )
+  return <div>Something went sadly incorrect.</div>
 }
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
         <header className="App-header">
           <img width={150} src={logo} className="App-logo" alt="logo" />
           <Query query={getVersion}>
-            {({loading, data, error}) => (
+            {({ loading, data, error }) => (
               <TimedVersion loading={loading} data={data} error={error} />
             )}
           </Query>
