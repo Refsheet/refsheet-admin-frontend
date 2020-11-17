@@ -6,6 +6,9 @@ module.exports = {
       jsx: true
     }
   },
+  globals: {
+    test: "readonly"
+  },
   rules: {
     // ES6
     "no-unused-vars": 'warn',
