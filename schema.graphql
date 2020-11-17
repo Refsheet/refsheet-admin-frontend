@@ -538,7 +538,12 @@ type Query {
     getNextModeration: Moderation
     getNotifications(page: Int): NotificationCollection
     getSession: Session
+    getVersion: RefsheetMeta
     searchForCharacter(page: Int, query: String!): CharactersCollection
+}
+
+type RefsheetMeta {
+    version: String
 }
 
 type RichText {

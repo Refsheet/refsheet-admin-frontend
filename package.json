@@ -3,12 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.2.6",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
+    "apollo-link": "^1.2.14",
+    "apollo-link-context": "^1.0.20",
+    "apollo-link-http": "^1.5.17",
     "canvas": "^2.5.0",
     "fibers": "^3.1.0",
     "graphql": "^15.0.0",
+    "graphql.macro": "^1.4.2",
+    "jest-transform-graphql": "^2.1.0",
+    "node-fetch": "^2.6.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -53,5 +60,11 @@
   "devDependencies": {
     "eslint-plugin-graphql": "^4.0.0",
     "prettier": "^2.1.2"
+  },
+  "jest": {
+    "transform": {
+      "\\.(gql|graphql)$": "jest-transform-graphql",
+      ".*": "babel-jest"
+    }
   }
 }
