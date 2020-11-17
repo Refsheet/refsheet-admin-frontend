@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
 
 const HOST = window.location.host.match(/refsheet.net$/)
-  ? 'https://refsheet.net/graphql'
+  ? 'https://refsheet.net'
   : 'http://localhost:5000'
 
 const httpLink = new HttpLink({
