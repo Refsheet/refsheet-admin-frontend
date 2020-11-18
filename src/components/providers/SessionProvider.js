@@ -40,7 +40,15 @@ const SessionProvider = ({ children }) => {
 
     return (
       <SessionContext.Provider value={state}>
-        {loading ? <Loading /> : error ? <Error message={error} /> : children}
+        {loading ? (
+          <Loading />
+        ) : error ? (
+          <Error message={error} />
+        ) : data.getSession && data.getSession.currentUser ? (
+          children
+        ) : (
+          <Error message={'Please login on Refsheet.net first.'} />
+        )}
       </SessionContext.Provider>
     )
   }
