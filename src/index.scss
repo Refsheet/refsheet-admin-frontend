@@ -1,15 +1,52 @@
 @import 'scss/materialize';
+@import './App';
+@import 'scss/NavBar';
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  background-color: $page-bg-color;
+  color: $text-color;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.sidenav {
+  margin-top: $navbar-height;
+  z-index: $sidenav-z;
+  $background-opacity: 0.6;
+
+  .background {
+    background-color: $primary-color-dark;
+    background:
+            black
+            radial-gradient(circle at 20px -10px,
+                    rgba($primary-color, $background-opacity) 0%,
+                    rgba($primary-color, $background-opacity) 60%,
+                    rgba($primary-color, $background-opacity + 0.2) 60.1%
+            );
+
+    img {
+      height: 100%;
+      float: right;
+      padding: 1rem;
+      opacity: 0.2;
+    }
+  }
+
+  .subheader {
+    color: darken($sidenav-font-color, 50%);
+  }
+
+  .divider {
+    background-color: lighten($sidenav-bg-color, 10%);
+  }
+
+  li > a > i.material-icons.prefix {
+    color: darken($sidenav-font-color, 50%);
+  }
+
+  li > a.primary-dark > i.material-icons.prefix {
+    color: $primary-color-light;
+  }
+
+  li > a:hover {
+    background-color: lighten($sidenav-bg-color, 5%);
+  }
 }

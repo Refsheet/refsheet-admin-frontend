@@ -1,7 +1,9 @@
 query getSession {
     getSession {
         currentUser {
+            name
             username
+            avatar_url
         }
     }
 }

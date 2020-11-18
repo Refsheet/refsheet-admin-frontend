@@ -1,12 +1,12 @@
 import React from 'react'
-import NavBar from "./NavBar"
+import NavBar from './NavBar'
 
 const Layout = ({ children }) => {
   return (
-    <React.Fragment>
+    <div className="App">
       <NavBar />
-      { children }
-    </React.Fragment>
+      {children}
+    </div>
   )
 }
 

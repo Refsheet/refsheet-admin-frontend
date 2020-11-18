@@ -1,7 +1,0 @@
-query getSession {
-    getSession {
-        currentUser {
-            username
-        }
-    }
-}

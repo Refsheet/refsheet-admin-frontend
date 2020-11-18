@@ -5,8 +5,8 @@ class LoginForm extends Component {
     super(props)
 
     this.state = {
-      username: "",
-      password: ""
+      username: '',
+      password: '',
     }
   }
 
@@ -27,8 +27,22 @@ class LoginForm extends Component {
     return (
       <div className={'LoginForm'}>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <input type={'text'} name={'username'} id={'username'} placeholder={'Username'} onChange={this.handleChange.bind(this)} value={this.state.username} />
-          <input type={'password'} name={'password'} id={'password'} placeholder={'Password'} onChange={this.handleChange.bind(this)} value={this.state.password} />
+          <input
+            type={'text'}
+            name={'username'}
+            id={'username'}
+            placeholder={'Username'}
+            onChange={this.handleChange.bind(this)}
+            value={this.state.username}
+          />
+          <input
+            type={'password'}
+            name={'password'}
+            id={'password'}
+            placeholder={'Password'}
+            onChange={this.handleChange.bind(this)}
+            value={this.state.password}
+          />
           <button type={'Submit'}>Log In</button>
         </form>
       </div>
