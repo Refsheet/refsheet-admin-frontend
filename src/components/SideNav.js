@@ -62,7 +62,6 @@ const Sidebar = () => {
           <Icon className={'prefix'}>open_in_new</Icon> Advertising
         </NavLink>
       </li>
-
     </SideNav>
   )
 }
