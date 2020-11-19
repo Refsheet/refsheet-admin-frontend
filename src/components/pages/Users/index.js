@@ -14,6 +14,7 @@ import Scrollbar from 'react-scrollbars-custom'
 import { withContentRect } from 'react-measure'
 import { Query } from '@apollo/client/react/components'
 import { loader } from 'graphql.macro'
+import {Link} from "react-router-dom"
 
 const getUsers = loader('../../../graphql/getUsers.graphql')
 
@@ -22,12 +23,12 @@ const UserListItem = ({ user }) => {
 
   return (
     <CollectionItem className="avatar">
-      <a href="javascript:void(0)">
+      <Link to={'/users/' + user.username}>
         <img alt="" className="circle" src={user.avatar_url} />
-      </a>
-      <a href="javascript:void(0)" className="title">
+      </Link>
+      <Link to={'/users/' + user.username} className="title">
         {user.name}
-      </a>
+      </Link>
       <p>@{user.username}</p>
       <a className="secondary-content" href="javascript:void(0)">
         <Icon className={'grey-text'}>star_outline</Icon>
