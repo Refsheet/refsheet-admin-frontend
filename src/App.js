@@ -4,13 +4,16 @@ import { ApolloProvider } from '@apollo/client'
 import SessionProvider from './components/providers/SessionProvider'
 import Layout from './components/Layout'
 import { BrowserRouter } from 'react-router-dom'
+import Users from './components/pages/Users'
 
 function App() {
   return (
     <ApolloProvider client={client}>
       <SessionProvider>
         <BrowserRouter>
-          <Layout />
+          <Layout>
+            <Users />
+          </Layout>
         </BrowserRouter>
       </SessionProvider>
     </ApolloProvider>

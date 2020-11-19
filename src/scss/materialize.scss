@@ -1,11 +1,13 @@
 @import '~materialize-css/sass/components/_color-variables.scss';
 
-$primary-color: #308cb3 !default;
-$secondary-color: #1F5A73 !default;
+$primary-color: color('orange', 'darken-2') !default;
+$secondary-color: color('red', 'darken-2') !default;
 
 $text-color: color('grey', 'lighten-3') !default;
 $page-bg-color: color('grey', 'darken-4') !default;
 $card-bg-color: lighten($page-bg-color, 3%) !default;
+
+$border-color: rgba(255, 255, 255, 0.1);
 
 $sidenav-bg-color: $card-bg-color;
 $sidenav-font-color: $text-color;
@@ -14,6 +16,11 @@ $input-disabled-solid-color: color('grey', 'darken-3');
 $button-disabled-background: $input-disabled-solid-color;
 $input-disabled-color: color('grey', 'darken-1');
 $button-disabled-color: $input-disabled-color;
+
+$collection-border-color: $border-color;
+$collection-bg-color: $card-bg-color;
+$collection-active-bg-color: lighten($card-bg-color, 2%);
+$collection-hover-bg-color: $collection-active-bg-color;
 
 $sidenav-z: 999;
 
@@ -28,6 +35,31 @@ $sidenav-z: 999;
   font-size: 1.3rem;
 }
 
+.container-large {
+  padding: 1.5rem 0.75rem;
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+.collection .collection-item.avatar.avatar {
+  min-height: auto;
+}
+
+.collection {
+  &.with-header > .collection-header {
+    background-color: $primary-color-dark;
+    border-bottom: none;
+
+    h4 {
+      font-size: inherit;
+      margin: 0;
+    }
+  }
+}
+
+.collection.no-border {
+  border: none;
+}
 .full-splash {
   $background-opacity: 0.1;
   min-height: 100vh;
