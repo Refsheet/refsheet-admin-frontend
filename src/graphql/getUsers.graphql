@@ -1,5 +1,6 @@
-query getUsers($page: Int, $query: String, $order: String) {
-    getUsers(page: $page, query: $query, order: $order) {
+query getUsers($page: Int, $query: String, $order: String, $ids: [ID]) {
+    getUsers(page: $page, query: $query, order: $order, ids: $ids) {
+        id
         avatar_url
         username
         name

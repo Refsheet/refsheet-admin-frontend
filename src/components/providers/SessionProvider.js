@@ -24,7 +24,9 @@ const Error = ({ message }) => {
     <main className={'full-splash'}>
       <div className={'form center'}>
         <h1>Error :(</h1>
-        <p className={'larger'}>{message || 'Something went wrong.'}</p>
+        <p className={'larger'}>
+          {JSON.stringify(message) || 'Something went wrong.'}
+        </p>
       </div>
     </main>
   )
@@ -57,4 +59,4 @@ const SessionProvider = ({ children }) => {
 }
 
 export default SessionProvider
-export { SessionContext }
+export { SessionContext, Loading, Error }

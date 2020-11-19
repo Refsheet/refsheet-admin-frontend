@@ -1,0 +1,11 @@
+query getUser($username: String) {
+    getUser(username: $username) {
+        id
+        created_at
+        updated_at
+        avatar_url
+        name
+        username
+#        email
+    }
+}
