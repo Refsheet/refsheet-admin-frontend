@@ -1,0 +1,7 @@
+query getUsers($page: Int, $query: String, $order: String) {
+    getUsers(page: $page, query: $query, order: $order) {
+        avatar_url
+        username
+        name
+    }
+}

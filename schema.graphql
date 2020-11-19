@@ -538,6 +538,7 @@ type Query {
     getNextModeration: Moderation
     getNotifications(page: Int): NotificationCollection
     getSession: Session
+    getUsers(ascending: Boolean, order: String, page: Int, query: String, with_deleted: Boolean): [User]
     getVersion: RefsheetMeta
     searchForCharacter(page: Int, query: String!): CharactersCollection
 }

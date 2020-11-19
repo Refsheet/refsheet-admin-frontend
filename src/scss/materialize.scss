@@ -16,6 +16,8 @@ $input-disabled-solid-color: color('grey', 'darken-3');
 $button-disabled-background: $input-disabled-solid-color;
 $input-disabled-color: color('grey', 'darken-1');
 $button-disabled-color: $input-disabled-color;
+$input-border-color: $border-color;
+$placeholder-text-color: rgba(255, 255, 255, 0.3);
 
 $collection-border-color: $border-color;
 $collection-bg-color: $card-bg-color;
