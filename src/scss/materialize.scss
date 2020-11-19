@@ -134,3 +134,15 @@ input, textarea {
 .primary-dark-text {
   color: $primary-color-dark !important;
 }
+
+table.attributes {
+  tr {
+    border: 1px solid $border-color;
+    border-left: none;
+    border-right: none;
+  }
+
+  td, th {
+    padding: 0.5rem 0;
+  }
+}

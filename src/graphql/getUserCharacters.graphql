@@ -1,0 +1,11 @@
+query getUser($id: ID) {
+    getUser(id: $id) {
+        id
+        characters {
+            id
+            name
+            slug
+            shortcode
+        }
+    }
+}

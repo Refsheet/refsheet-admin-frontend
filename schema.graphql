@@ -627,6 +627,7 @@ type User implements ApplicationRecord {
     characters_count: String
     created_at: Int
     deleted_at: Int
+    email: String
     id: ID
     is_admin: Boolean
     is_followed: Boolean
@@ -639,6 +640,8 @@ type User implements ApplicationRecord {
     profile: String
     profile_html: String
     profile_image_url: String
+    support_pledge_amount: Int
+    unconfirmed_email: String
     updated_at: Int
     username: String
 }
