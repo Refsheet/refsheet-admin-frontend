@@ -29,7 +29,6 @@ const PaginatedCollection = ({
       let out = data;
       (dataPath || Object.keys(data)[0]).split('.').filter(Boolean).map(key => out = out[key])
       const final = (out && out.map) ? out : [out]
-      console.log({out, data, final})
       return final
     }
 

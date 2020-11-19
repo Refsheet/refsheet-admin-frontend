@@ -6,6 +6,11 @@ query getUser($id: ID) {
             name
             slug
             shortcode
+            profile_image {
+                url {
+                    small_square
+                }
+            }
         }
     }
 }

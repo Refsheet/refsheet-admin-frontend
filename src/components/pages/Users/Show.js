@@ -13,18 +13,18 @@ const getUser = loader('../../../graphql/getUser.graphql')
 const getUsers = loader('../../../graphql/getUsers.graphql')
 const getUserCharacters = loader('../../../graphql/getUserCharacters.graphql')
 
-const UserItem = ({ user }) => {
-  if (!user) return null
+const CharacterItem = ({ character }) => {
+  if (!character) return null
 
   return (
     <CI className="avatar">
-      <Link to={'/users/' + user.username}>
-        <img alt="" className="circle" src={user.avatar_url} />
+      <Link to={'/characters/' + character.shortcode}>
+        <img alt="" className="circle" src={character.profile_image.url.small_square} />
       </Link>
-      <Link to={'/users/' + user.username} className="title">
-        {user.name}
+      <Link to={'/characters/' + character.shortcode} className="title">
+        {character.name}
       </Link>
-      <p className={'grey-text text-darken-1'}>@{user.username}</p>
+      <p className={'grey-text text-darken-1'}>!{character.shortcode}</p>
       <a className="secondary-content" href="javascript:void(0)">
         <Icon className={'grey-text'}>star_outline</Icon>
       </a>
@@ -76,7 +76,7 @@ const UserView = ({ user }) => {
             search={query}
             dataPath={'getUser.characters'}
             variables={{ id: user.id }}
-            renderItem={item => <UserItem user={item} />}
+            renderItem={item => <CharacterItem character={item} />}
           />
         </Col>
         <Col s={12} m={8} l={4}>
@@ -86,7 +86,7 @@ const UserView = ({ user }) => {
             search={query}
             dataPath={'getUser.characters'}
             variables={{ id: user.id }}
-            renderItem={item => <UserItem user={item} />}
+            renderItem={item => <CharacterItem character={item} />}
           />
         </Col>
         <Col s={12} m={8} l={4}>
@@ -96,7 +96,7 @@ const UserView = ({ user }) => {
             search={query}
             dataPath={'getUser.characters'}
             variables={{ id: user.id }}
-            renderItem={item => <UserItem user={item} />}
+            renderItem={item => <CharacterItem character={item} />}
           />
         </Col>
       </Row>
