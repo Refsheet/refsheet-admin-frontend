@@ -15,7 +15,7 @@ import { Query } from '@apollo/client/react/components'
 import { loader } from 'graphql.macro'
 import { Link } from 'react-router-dom'
 import HistoryCookie from '../../../utils/HistoryCookie'
-import PaginatedCollection from "../../PaginatedCollection"
+import PaginatedCollection from '../../PaginatedCollection'
 
 const getUsers = loader('../../../graphql/getUsers.graphql')
 

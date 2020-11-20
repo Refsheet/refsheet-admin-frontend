@@ -1,6 +1,6 @@
 import React from 'react'
-import {CollectionItem as CI, Icon} from "react-materialize"
-import {Link} from "react-router-dom"
+import { CollectionItem as CI, Icon } from 'react-materialize'
+import { Link } from 'react-router-dom'
 
 const CollectionItem = ({ user }) => {
   if (!user) return null

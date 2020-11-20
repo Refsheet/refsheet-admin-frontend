@@ -14,5 +14,5 @@ export const client = new ApolloClient({
   link: httpLink,
 })
 
-export { HOST as host }
+export { HOST }
 export default client
