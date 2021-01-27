@@ -88,8 +88,19 @@ const UserView = ({ user }) => {
                 <tbody>
                   <tr>
                     <th>Email Address</th>
-                    <td>{user.email}</td>
+                    <td>
+                      {user.email}
+                      {user.email_confirmed_at && (
+                        <span>&nbsp;(Confirmed)</span>
+                      )}
+                    </td>
                   </tr>
+                  {user.unconfirmed_email && (
+                    <tr>
+                      <th>Unconfirmed Email</th>
+                      <td>{user.unconfirmed_email}</td>
+                    </tr>
+                  )}
                   <tr>
                     <th width={'150px'}>Member Since</th>
                     <td>

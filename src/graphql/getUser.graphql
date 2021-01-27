@@ -7,5 +7,7 @@ query getUser($username: String) {
         name
         username
         email
+        email_confirmed_at
+        unconfirmed_email
     }
 }
