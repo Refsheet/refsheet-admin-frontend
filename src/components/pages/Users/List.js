@@ -1,19 +1,10 @@
 import React, { useState } from 'react'
 import {
-  Preloader,
   Row,
   Col,
-  Collection,
-  CollectionItem,
-  Icon,
-  Button,
 } from 'react-materialize'
 import SearchBar from '../../SearchBar'
-import Scrollbar from 'react-scrollbars-custom'
-import { withContentRect } from 'react-measure'
-import { Query } from '@apollo/client/react/components'
 import { loader } from 'graphql.macro'
-import { Link } from 'react-router-dom'
 import HistoryCookie from '../../../utils/HistoryCookie'
 import PaginatedCollection from '../../PaginatedCollection'
 

@@ -19,13 +19,25 @@ const Loading = () => {
   )
 }
 
-const Error = ({ message }) => {
+const getErrorMessage = (error = {}) => {
+  const { message, graphQLErrors } = error;
+  if (message) {
+    return message;
+  } else if (graphQLErrors) {
+    return graphQLErrors.map(m => m.message).join(', ')
+  } else {
+    console.error(error);
+  }
+}
+
+const Error = ({error}) => {
+  const message = getErrorMessage(error);
   return (
     <main className={'full-splash'}>
       <div className={'form center'}>
         <h1>Error :(</h1>
         <p className={'larger'}>
-          {JSON.stringify(message) || 'Something went wrong.'}
+          {message || 'Something went wrong.'}
         </p>
       </div>
     </main>

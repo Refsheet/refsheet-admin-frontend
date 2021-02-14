@@ -8,42 +8,16 @@ import {
   Row,
   Col,
   Card,
-  CardTitle,
-  CollectionItem as CI,
   Icon,
 } from 'react-materialize'
 import PaginatedCollection from '../../PaginatedCollection'
 import SearchBar from '../../SearchBar'
-import { Link } from 'react-router-dom'
 import { HOST } from '../../../services/RefsheetApiService'
 import Moment from 'react-moment'
+import CharacterItem from "../../PaginatedCollection/CharacterItem";
 
 const getUser = loader('../../../graphql/getUser.graphql')
-const getUsers = loader('../../../graphql/getUsers.graphql')
 const getUserCharacters = loader('../../../graphql/getUserCharacters.graphql')
-
-const CharacterItem = ({ character }) => {
-  if (!character) return null
-
-  return (
-    <CI className="avatar">
-      <Link to={'/characters/' + character.shortcode}>
-        <img
-          alt=""
-          className="circle"
-          src={character.profile_image.url.small_square}
-        />
-      </Link>
-      <Link to={'/characters/' + character.shortcode} className="title">
-        {character.name}
-      </Link>
-      <p className={'grey-text text-darken-1'}>!{character.shortcode}</p>
-      <a className="secondary-content" href="javascript:void(0)">
-        <Icon className={'grey-text'}>star_outline</Icon>
-      </a>
-    </CI>
-  )
-}
 
 const UserView = ({ user }) => {
   const [query, setQuery] = useState('')

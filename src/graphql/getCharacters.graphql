@@ -1,0 +1,13 @@
+query getCharacters($page: Int, $query: String, $order: String, $ids: [ID]) {
+    getCharacters(page: $page, query: $query, order: $order, ids: $ids) {
+        id
+        name
+        slug
+        shortcode
+        profile_image {
+            url {
+                small_square
+            }
+        }
+    }
+}

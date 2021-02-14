@@ -52,3 +52,7 @@ html {
     background-color: lighten($sidenav-bg-color, 5%);
   }
 }
+
+.preloader-wrapper.block {
+  margin: 0 auto;
+}

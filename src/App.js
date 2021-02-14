@@ -5,6 +5,7 @@ import SessionProvider from './components/providers/SessionProvider'
 import Layout from './components/Layout'
 import { BrowserRouter } from 'react-router-dom'
 import Users from './components/pages/Users'
+import Characters from './components/pages/Characters'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Users />
+            <Characters />
           </Layout>
         </BrowserRouter>
       </SessionProvider>

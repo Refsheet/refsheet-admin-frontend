@@ -48,7 +48,9 @@ const PaginatedCollection = ({
       >
         {({ data, loading, error }) =>
           loading ? (
-            <Preloader size={'big'} />
+              <div style={{ padding: "1.5rem" }}>
+                  <Preloader size={'big'} color={'red'} className={'block'} />
+              </div>
           ) : error ? (
             <div>{JSON.stringify(error)}</div>
           ) : (

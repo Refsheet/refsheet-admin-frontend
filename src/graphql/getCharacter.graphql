@@ -1,0 +1,9 @@
+query getCharacter($shortcode: ID!) {
+    getCharacter(id: $shortcode, shortcode: true) {
+        id
+        created_at
+        updated_at
+        name
+        shortcode
+    }
+}
