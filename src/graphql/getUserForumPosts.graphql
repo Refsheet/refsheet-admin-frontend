@@ -1,0 +1,22 @@
+query getForumPosts($userId: ID!, $page: Int, $perPage: Int) {
+    getForumPosts(userId: $userId, page: $page, perPage: $perPage) {
+        currentPage
+        totalPages
+        totalEntries
+
+        forumPosts {
+            id
+            content
+            karma_total
+            admin_post
+            moderator_post
+            discussion {
+                topic
+                slug
+                forum {
+                    slug
+                }
+            }
+        }
+    }
+}

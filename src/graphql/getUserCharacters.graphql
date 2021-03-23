@@ -6,6 +6,7 @@ query getUser($id: ID) {
             name
             slug
             shortcode
+            avatar_url(style: "thumbnail")
             profile_image {
                 url {
                     small_square

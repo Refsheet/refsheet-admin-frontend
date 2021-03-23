@@ -4,20 +4,17 @@ import { Error, Loading } from '../../providers/SessionProvider'
 import { loader } from 'graphql.macro'
 import HistoryCookie from '../../../utils/HistoryCookie'
 import { useParams } from 'react-router'
-import {
-  Row,
-  Col,
-  Card,
-  Icon,
-} from 'react-materialize'
+import { Row, Col, Card, Icon } from 'react-materialize'
 import PaginatedCollection from '../../PaginatedCollection'
 import SearchBar from '../../SearchBar'
 import { HOST } from '../../../services/RefsheetApiService'
 import Moment from 'react-moment'
-import CharacterItem from "../../PaginatedCollection/CharacterItem";
+import CharacterItem from '../../PaginatedCollection/CharacterItem'
+import ForumPostItem from "../../PaginatedCollection/ForumPostItem";
 
 const getUser = loader('../../../graphql/getUser.graphql')
 const getUserCharacters = loader('../../../graphql/getUserCharacters.graphql')
+const getUserForumPosts = loader('../../../graphql/getUserForumPosts.graphql')
 
 const UserView = ({ user }) => {
   const [query, setQuery] = useState('')
@@ -116,18 +113,18 @@ const UserView = ({ user }) => {
               title={'Characters'}
               search={query}
               dataPath={'getUser.characters'}
+              noPagination
               variables={{ id: user.id }}
               renderItem={(item) => <CharacterItem character={item} />}
             />
           </Col>
           <Col s={12} m={8} l={4}>
             <PaginatedCollection
-              query={getUserCharacters}
+              query={getUserForumPosts}
               title={'Forum Posts'}
               search={query}
-              dataPath={'getUser.characters'}
-              variables={{ id: user.id }}
-              renderItem={(item) => <CharacterItem character={item} />}
+              renderItem={(item) => <ForumPostItem post={item} />}
+              variables={{ userId: user.id }}
             />
           </Col>
           <Col s={12} m={8} l={4}>
@@ -136,6 +133,7 @@ const UserView = ({ user }) => {
               title={'Image Comments'}
               search={query}
               dataPath={'getUser.characters'}
+              noPagination
               variables={{ id: user.id }}
               renderItem={(item) => <CharacterItem character={item} />}
             />

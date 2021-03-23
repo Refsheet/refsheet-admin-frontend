@@ -20,25 +20,23 @@ const Loading = () => {
 }
 
 const getErrorMessage = (error = {}) => {
-  const { message, graphQLErrors } = error;
+  const { message, graphQLErrors } = error
   if (message) {
-    return message;
+    return message
   } else if (graphQLErrors) {
-    return graphQLErrors.map(m => m.message).join(', ')
+    return graphQLErrors.map((m) => m.message).join(', ')
   } else {
-    console.error(error);
+    console.error(error)
   }
 }
 
-const Error = ({error}) => {
-  const message = getErrorMessage(error);
+const Error = ({ error }) => {
+  const message = getErrorMessage(error)
   return (
     <main className={'full-splash'}>
       <div className={'form center'}>
         <h1>Error :(</h1>
-        <p className={'larger'}>
-          {message || 'Something went wrong.'}
-        </p>
+        <p className={'larger'}>{message || 'Something went wrong.'}</p>
       </div>
     </main>
   )

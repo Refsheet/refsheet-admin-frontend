@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Row,
-  Col,
-} from 'react-materialize'
+import { Row, Col } from 'react-materialize'
 import SearchBar from '../../SearchBar'
 import { loader } from 'graphql.macro'
 import HistoryCookie from '../../../utils/HistoryCookie'
