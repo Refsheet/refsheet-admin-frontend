@@ -5,9 +5,8 @@ import React from 'react'
 const ForumPostItem = ({ post }) => {
   if (!post) return null
 
-  const { discussion = {} } = post
-
-  const { forum = {} } = discussion
+  const { discussion } = post
+  const { forum = {} } = discussion || {}
 
   return (
     <CI>
