@@ -480,6 +480,7 @@ type Moderation implements ApplicationRecord {
 type Mutation {
     addComment(comment: String!, mediaId: ID!): MediaComment
     addFavorite(mediaId: ID!): MediaFavorite
+    banUser(id: ID!, moderation_ban: Boolean, moderation_reason: String): User
     blockUser(username: String!): User
     convertCharacter(id: ID!): Character
     createActivity(character_id: ID, comment: String): Activity

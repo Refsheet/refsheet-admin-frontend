@@ -4,13 +4,15 @@ import { Error, Loading } from '../../providers/SessionProvider'
 import { loader } from 'graphql.macro'
 import HistoryCookie from '../../../utils/HistoryCookie'
 import { useParams } from 'react-router'
-import { Row, Col, Card, Icon } from 'react-materialize'
+import { Row, Col, Card } from 'react-materialize'
 import PaginatedCollection from '../../PaginatedCollection'
 import SearchBar from '../../SearchBar'
 import { HOST } from '../../../services/RefsheetApiService'
 import Moment from 'react-moment'
 import CharacterItem from '../../PaginatedCollection/CharacterItem'
 import ForumPostItem from '../../PaginatedCollection/ForumPostItem'
+import ExternalLink from '../../shared/ExternalLink'
+import BanButton from './BanButton'
 
 const getUser = loader('../../../graphql/getUser.graphql')
 const getUserCharacters = loader('../../../graphql/getUserCharacters.graphql')
@@ -32,14 +34,7 @@ const UserView = ({ user }) => {
           <Col s={12}>
             <Card style={{ marginTop: '1.5rem' }}>
               <div className={'right'}>
-                <a
-                  href={HOST + '/' + user.username}
-                  target={'_blank'}
-                  rel="noreferrer"
-                  className={'grey-text text-darken-1'}
-                >
-                  <Icon>open_in_new</Icon>
-                </a>
+                <ExternalLink href={HOST + '/' + user.username} />
               </div>
               <img
                 className={'avatar circle left'}
@@ -55,49 +50,59 @@ const UserView = ({ user }) => {
                 @{user.username}&nbsp;&nbsp;|&nbsp;&nbsp;{user.id}
               </span>
               <br className={'clearfix'} />
-              <table className={'attributes'} style={{ marginTop: '1.5rem' }}>
-                <tbody>
-                  <tr>
-                    <th>Email Address</th>
-                    <td>
-                      {user.email}
-                      {user.email_confirmed_at && (
-                        <span>&nbsp;(Confirmed)</span>
+              <div className={'row'}>
+                <div className={'col s12 m8 l9'}>
+                  <table
+                    className={'attributes'}
+                    style={{ marginTop: '1.5rem' }}
+                  >
+                    <tbody>
+                      <tr>
+                        <th>Email Address</th>
+                        <td>
+                          {user.email}
+                          {user.email_confirmed_at && (
+                            <span>&nbsp;(Confirmed)</span>
+                          )}
+                        </td>
+                      </tr>
+                      {user.unconfirmed_email && (
+                        <tr>
+                          <th>Unconfirmed Email</th>
+                          <td>{user.unconfirmed_email}</td>
+                        </tr>
                       )}
-                    </td>
-                  </tr>
-                  {user.unconfirmed_email && (
-                    <tr>
-                      <th>Unconfirmed Email</th>
-                      <td>{user.unconfirmed_email}</td>
-                    </tr>
-                  )}
-                  <tr>
-                    <th width={'150px'}>Member Since</th>
-                    <td>
-                      <Moment unix format={'MM/DD/YYYY'}>
-                        {user.created_at}
-                      </Moment>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Last Login</th>
-                    <td>
-                      <Moment unix format={'MM/DD/YYYY'}>
-                        {user.last_seen_at}
-                      </Moment>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Support Pledge</th>
-                    <td>{user.support_pledge_amount}</td>
-                  </tr>
-                  <tr>
-                    <th>Flags</th>
-                    <td>?</td>
-                  </tr>
-                </tbody>
-              </table>
+                      <tr>
+                        <th width={'150px'}>Member Since</th>
+                        <td>
+                          <Moment unix format={'MM/DD/YYYY'}>
+                            {user.created_at}
+                          </Moment>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Last Login</th>
+                        <td>
+                          <Moment unix format={'MM/DD/YYYY'}>
+                            {user.last_seen_at}
+                          </Moment>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Support Pledge</th>
+                        <td>{user.support_pledge_amount}</td>
+                      </tr>
+                      <tr>
+                        <th>Flags</th>
+                        <td>?</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className={'col s12 m4 l3'}>
+                  {!user.deleted_at && <BanButton user={user} />}
+                </div>
+              </div>
             </Card>
           </Col>
         </Row>

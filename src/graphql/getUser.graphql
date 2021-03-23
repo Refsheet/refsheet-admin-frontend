@@ -3,6 +3,7 @@ query getUser($username: String) {
         id
         created_at
         updated_at
+        deleted_at
         avatar_url
         name
         username

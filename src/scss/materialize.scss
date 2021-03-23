@@ -28,6 +28,29 @@ $sidenav-z: 999;
 
 @import '~materialize-css/sass/materialize.scss';
 
+.row {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.modal {
+  background-color: $card-bg-color;
+
+  .modal-footer {
+    background-color: darken($card-bg-color, 2.5%);
+
+    .btn, button {
+      color: darken($text-color, 2%);
+      background-color: darken($card-bg-color, 5%);
+      margin-left: 1rem;
+    }
+  }
+}
+
 .block {
   display: block;
   width: 100%;

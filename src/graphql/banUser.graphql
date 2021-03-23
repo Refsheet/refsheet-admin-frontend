@@ -1,0 +1,6 @@
+mutation banUser($id: ID!, $reason: String) {
+    banUser(id: $id, moderation_ban: true, moderation_reason: $reason) {
+        id
+        deleted_at
+    }
+}
