@@ -28,7 +28,7 @@ const PaginatedCollection = ({
 
     if (out.map) {
       return {
-        collection: out
+        collection: out,
       }
     }
 
@@ -43,12 +43,10 @@ const PaginatedCollection = ({
    */
   const findCollection = (data) => {
     let out = []
-    if (data.map)
-      return data
+    if (data.map) return data
 
-    Object.keys(data).forEach(k => {
-      if (data[k] && data[k].map)
-        out = data[k]
+    Object.keys(data).forEach((k) => {
+      if (data[k] && data[k].map) out = data[k]
     })
 
     return out
@@ -57,12 +55,7 @@ const PaginatedCollection = ({
   const renderResults = (data) => {
     console.log(data)
 
-    const {
-      currentPage,
-      perPage,
-      totalPages,
-      ...query
-    } = getData(data)
+    const { currentPage, perPage, totalPages, ...query } = getData(data)
 
     const pageGo = (diff) => (e) => {
       e.preventDefault()
@@ -79,21 +72,27 @@ const PaginatedCollection = ({
             {filtered.map(renderItem)}
           </Scrollbar>
         </Collection>
-        { !noPagination && <div className={'collection-footer'}>
-          <Button className={'left'} onClick={pageGo(-1)} disabled={page <= 1}>
-            <Icon>keyboard_arrow_left</Icon>
-          </Button>
-          <div className={'center'}>
-            Page {currentPage} of {totalPages}
+        {!noPagination && (
+          <div className={'collection-footer'}>
+            <Button
+              className={'left'}
+              onClick={pageGo(-1)}
+              disabled={page <= 1}
+            >
+              <Icon>keyboard_arrow_left</Icon>
+            </Button>
+            <div className={'center'}>
+              Page {currentPage} of {totalPages}
+            </div>
+            <Button
+              className={'right'}
+              onClick={pageGo(1)}
+              disabled={page >= totalPages}
+            >
+              <Icon>keyboard_arrow_right</Icon>
+            </Button>
           </div>
-          <Button
-            className={'right'}
-            onClick={pageGo(1)}
-            disabled={page >= totalPages}
-          >
-            <Icon>keyboard_arrow_right</Icon>
-          </Button>
-        </div> }
+        )}
       </React.Fragment>
     )
   }
@@ -111,17 +110,14 @@ const PaginatedCollection = ({
         }}
       >
         {({ data, loading, error }) => {
-          if (loading) return (
-            <div style={{ padding: '1.5rem' }}>
-              <Preloader size={'big'} color={'red'} className={'block'} />
-            </div>
-          )
-          else if (error) return (
-            <div>{JSON.stringify(error)}</div>
-          )
-          else return (
-            renderResults(data)
-          )
+          if (loading)
+            return (
+              <div style={{ padding: '1.5rem' }}>
+                <Preloader size={'big'} color={'red'} className={'block'} />
+              </div>
+            )
+          else if (error) return <div>{JSON.stringify(error)}</div>
+          else return renderResults(data)
         }}
       </Query>
     </div>

@@ -10,7 +10,7 @@ import SearchBar from '../../SearchBar'
 import { HOST } from '../../../services/RefsheetApiService'
 import Moment from 'react-moment'
 import CharacterItem from '../../PaginatedCollection/CharacterItem'
-import ForumPostItem from "../../PaginatedCollection/ForumPostItem";
+import ForumPostItem from '../../PaginatedCollection/ForumPostItem'
 
 const getUser = loader('../../../graphql/getUser.graphql')
 const getUserCharacters = loader('../../../graphql/getUserCharacters.graphql')
