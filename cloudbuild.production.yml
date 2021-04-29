@@ -30,7 +30,7 @@ steps:
     args:
       - -m
       - -h
-      - 'Cache-Control:"Cache-Control: public, max-age=31559652"'
+      - 'Cache-Control: private, max-age=0, no-transform'
       - cp
       - -a
       - public-read
@@ -39,3 +39,12 @@ steps:
       - gs://admin.refsheet.net/
     waitFor:
       - Build App
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    id: Set Permissions
+    args:
+      - setmeta
+      - -r
+      - -h
+      - 'Cache-Control: public, max-age=31559652'
+      - gs://admin.refsheet.net/static
