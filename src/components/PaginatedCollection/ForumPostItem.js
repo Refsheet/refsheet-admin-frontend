@@ -13,6 +13,7 @@ const ForumPostItem = ({ post }) => {
   const {
     forum = {},
     slug: discussionSlug
+    topic: discussionTopic
   } = discussion || {}
 
   console.log({ post })
@@ -23,9 +24,9 @@ const ForumPostItem = ({ post }) => {
         to={'/forums/' + forum.slug + '/' + discussionSlug + '#' + post.id}
         className="title"
       >
-        RE: {discussion.topic}
+        RE: {discussionTopic || "<deleted>"}
       </Link>
-      <p className={'grey-text text-darken-1'}>{content.substr(0, 65)}</p>
+      <p className={'grey-text text-darken-1'}>{(content||"<deleted>").substr(0, 65)}</p>
       {/*<a className="secondary-content" href="javascript:void(0)">*/}
       {/*  <Icon className={'grey-text'}>star_outline</Icon>*/}
       {/*</a>*/}
