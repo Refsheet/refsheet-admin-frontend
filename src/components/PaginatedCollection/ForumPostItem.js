@@ -12,7 +12,7 @@ const ForumPostItem = ({ post }) => {
 
   const {
     forum = {},
-    slug: discussionSlug
+    slug: discussionSlug,
     topic: discussionTopic
   } = discussion || {}
 
