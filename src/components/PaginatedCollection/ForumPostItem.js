@@ -5,18 +5,27 @@ import React from 'react'
 const ForumPostItem = ({ post }) => {
   if (!post) return null
 
-  const { discussion = {} } = post
-  const { forum = {} } = discussion
+  const {
+    discussion,
+    content = ""
+  } = post || {}
+
+  const {
+    forum = {},
+    slug: discussionSlug
+  } = discussion || {}
+
+  console.log({ post })
 
   return (
     <CI>
       <Link
-        to={'/forums/' + forum.slug + '/' + discussion.slug + '#' + post.id}
+        to={'/forums/' + forum.slug + '/' + discussionSlug + '#' + post.id}
         className="title"
       >
         RE: {discussion.topic}
       </Link>
-      <p className={'grey-text text-darken-1'}>{post.content.substr(0, 65)}</p>
+      <p className={'grey-text text-darken-1'}>{content.substr(0, 65)}</p>
       {/*<a className="secondary-content" href="javascript:void(0)">*/}
       {/*  <Icon className={'grey-text'}>star_outline</Icon>*/}
       {/*</a>*/}
